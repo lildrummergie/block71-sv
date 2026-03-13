@@ -32,8 +32,8 @@ const App = () => {
       sector: "Safety Intelligence",
       impact: "Significant Incident Reduction",
       metric: "High-Accuracy Real-Time Detection",
-      quote: "SafeKey™ fosters a safety culture at our worksite, promoting individual accountability and enhancing overall measures effectively.",
-      author: "HSE R&D Manager, Saipem",
+      quote: "A thousand near-misses happen before an accident does. Our mission is to empower safety teams to identify these signals early and intervene proactively, ensuring that every worker returns home safely.",
+      author: "Vishnu Saran, CEO",
       bg: "bg-blue-600"
     },
     {
