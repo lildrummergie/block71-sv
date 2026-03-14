@@ -22,12 +22,17 @@ import {
   Target,
   FileSearch,
   Settings,
-  HardHat
+  HardHat,
+  ExternalLink,
+  Copy
 } from 'lucide-react';
 
 const App = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeStory, setActiveStory] = useState(0);
+  const [copied, setCopied] = useState(false);
+
+  const emailAddress = "siliconvalley@block71.co";
 
   const portfolioStories = [
     {
@@ -81,6 +86,18 @@ const App = () => {
       clearInterval(interval);
     };
   }, [portfolioStories.length]);
+
+  const copyEmail = () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = emailAddress;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
@@ -136,14 +153,14 @@ const App = () => {
             The Gateway for <br />
             <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent font-black">Industrial AI Deployment.</span>
           </h1>
-          <p className="mx-auto mb-12 max-w-3xl text-lg text-slate-500 sm:text-xl leading-relaxed font-medium font-sans">
+          <p className="mx-auto mb-12 max-w-3xl text-lg text-slate-500 sm:text-xl leading-relaxed font-medium font-sans px-4">
             Orchestrating global innovation. We connect high-signal founders with corporate authority to solve the world's most complex industrial challenges.
           </p>
-          <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-5 sm:flex-row px-6">
             <a href="#outcomes" className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 px-10 py-5 text-lg font-bold text-white transition-all hover:bg-slate-800 hover:shadow-2xl active:scale-95 sm:w-auto text-center">
               View Deployment-Ready Startups <ArrowRight className="h-5 w-5" />
             </a>
-            <a href="#contact" className="flex w-full items-center justify-center gap-3 rounded-2xl border-2 border-slate-100 bg-white px-10 py-5 text-lg font-bold transition-all hover:bg-slate-50 active:scale-95 sm:w-auto text-slate-600 text-center">
+            <a href="#contact" className="flex w-full items-center justify-center gap-3 rounded-2xl border-2 border-slate-100 bg-white px-10 py-5 text-lg font-bold transition-all hover:bg-slate-50 active:scale-95 sm:w-auto text-slate-600 text-center font-sans">
               Partner with us
             </a>
           </div>
@@ -262,8 +279,8 @@ const App = () => {
                   key={i} 
                   className={`transition-all duration-700 ${i === activeStory ? 'block opacity-100' : 'hidden opacity-0'}`}
                 >
-                  <div className={`rounded-[2.5rem] sm:rounded-[3.5rem] ${story.bg} p-8 sm:p-16 lg:p-20 text-white shadow-3xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative font-sans text-left`}>
-                    <div className="lg:w-3/5 relative z-10 text-left text-white">
+                  <div className={`rounded-[2.5rem] sm:rounded-[3.5rem] ${story.bg} p-8 sm:p-16 lg:p-20 text-white shadow-3xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative text-left`}>
+                    <div className="lg:w-3/5 relative z-10 text-left text-white font-sans">
                       <div className="mb-6 sm:mb-8 flex items-center gap-4">
                         <div className="bg-white/20 p-2.5 rounded-xl backdrop-blur-md">
                           <Trophy className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
@@ -293,12 +310,12 @@ const App = () => {
                     
                     <div className="lg:w-2/5 w-full relative z-10">
                       <div className="grid grid-cols-1 gap-6">
-                         <div className="rounded-[2rem] bg-white/10 p-8 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default text-left">
+                         <div className="rounded-[2rem] bg-white/10 p-8 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default text-left font-sans">
                             <CheckCircle2 className="mb-4 h-10 w-10 text-blue-300" />
                             <h4 className="text-lg font-black mb-3 text-white leading-tight">Enterprise Validation Pilot</h4>
                             <p className="text-sm text-white/70 font-medium leading-relaxed">Secured validation with Tier-1 industrial partners through our direct scouting network.</p>
                          </div>
-                         <div className="rounded-[2rem] bg-white/10 p-8 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default text-left">
+                         <div className="rounded-[2rem] bg-white/10 p-8 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default text-left font-sans">
                             <LineChart className="mb-4 h-10 w-10 text-blue-300" />
                             <h4 className="text-lg font-black mb-3 text-white leading-tight">Compressed Cycle</h4>
                             <p className="text-sm text-white/70 font-medium leading-relaxed">Accelerated GTM by aligning technical research with enterprise procurement requirements.</p>
@@ -323,71 +340,75 @@ const App = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Updated Contact Section with ordered Global Presence */}
       <section className="py-32 bg-slate-50 font-sans" id="contact">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-20 lg:grid-cols-2 lg:items-center">
-            <div className="text-left">
+          <div className="rounded-[4rem] bg-white p-12 lg:p-24 shadow-3xl border border-slate-100 flex flex-col lg:flex-row items-center gap-20 overflow-hidden relative">
+            <div className="absolute top-0 right-0 p-24 opacity-[0.03] pointer-events-none">
+              <Mail className="h-96 w-96 text-slate-900" />
+            </div>
+            
+            <div className="lg:w-1/2 text-left relative z-10">
+              <span className="text-blue-600 font-black text-xs uppercase tracking-[0.4em] mb-4 block">Direct Access</span>
               <h2 className="mb-8 text-5xl sm:text-6xl font-black text-slate-900 leading-[1.05] tracking-tighter">Ready for a <br /> Technical Deep-Dive?</h2>
-              <p className="mb-14 text-xl text-slate-500 max-w-md font-medium leading-relaxed">
+              <p className="mb-12 text-xl text-slate-500 font-medium leading-relaxed max-w-md">
                 Request our latest <span className="text-slate-900 font-bold">"SV Directional Report"</span> on Industrial AI adoption trends or book a technical audit for your facility.
               </p>
               
-              <div className="space-y-10">
+              <div className="space-y-12">
                 <div className="flex items-center gap-8 group">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-xl shadow-slate-200 transition-all group-hover:bg-blue-600 group-hover:text-white border border-slate-100 text-slate-900">
-                    <Mail className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1">Direct Procurement Line</div>
-                    <div className="text-2xl font-black tracking-tight text-slate-900">siliconvalley@block71.co</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-8 group">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-xl shadow-slate-200 transition-all group-hover:bg-blue-600 group-hover:text-white border border-slate-100 text-slate-900">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 shadow-xl shadow-slate-100 transition-all group-hover:bg-blue-600 group-hover:text-white border border-slate-200 text-slate-900 font-sans">
                     <MapPin className="h-6 w-6" />
                   </div>
                   <div>
                     <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1">Global Presence</div>
-                    <div className="text-2xl font-black tracking-tight text-slate-900 leading-tight">Singapore, USA, Indonesia, Vietnam, Japan, China</div>
+                    <div className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 leading-tight">USA, Singapore, Indonesia, Vietnam, Japan, China</div>
                   </div>
                 </div>
-                <a href="https://www.linkedin.com/company/block71global/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-blue-600 font-black text-lg hover:text-blue-700 transition-colors mt-4">
-                  <Linkedin className="h-7 w-7" />
-                  <span className="uppercase tracking-widest text-sm">BLOCK71 GLOBAL</span>
+                
+                <a href="https://www.linkedin.com/in/angelinetansf/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-8 group">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 shadow-xl shadow-slate-100 transition-all group-hover:bg-blue-600 group-hover:text-white border border-slate-200 text-slate-900 font-sans">
+                    <Linkedin className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1">Direct Networking</div>
+                    <div className="text-2xl font-black tracking-tight text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">Connect on LinkedIn</div>
+                  </div>
                 </a>
               </div>
             </div>
             
-            <div className="rounded-[3.5rem] bg-white p-12 shadow-3xl border border-slate-100 relative text-left">
-              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid gap-8 sm:grid-cols-2">
-                  <div className="relative">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-3 ml-1 text-left">Full Name</label>
-                    <input type="text" className="w-full rounded-2xl border-none bg-slate-50 p-5 focus:ring-2 focus:ring-blue-600 transition-all font-bold text-slate-700 placeholder:text-slate-300" placeholder="e.g. John Doe" />
+            <div className="lg:w-1/2 w-full text-center lg:text-left relative z-10">
+              <div className="bg-slate-900 rounded-[3rem] p-10 lg:p-16 text-white shadow-2xl">
+                <div className="mb-8 flex items-center justify-center lg:justify-start gap-4">
+                  <div className="bg-blue-600/20 p-3 rounded-xl border border-blue-500/30">
+                    <Zap className="h-6 w-6 text-blue-400" />
                   </div>
-                  <div className="relative text-left">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-3 ml-1 text-left">Email</label>
-                    <input type="email" className="w-full rounded-2xl border-none bg-slate-50 p-5 focus:ring-2 focus:ring-blue-600 transition-all font-bold text-slate-700 placeholder:text-slate-300" placeholder="e.g. john@company.com" />
-                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Decision Maker Access</span>
                 </div>
-                <div className="text-left">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-3 ml-1 text-left">Inquiry Type</label>
-                  <select className="w-full rounded-2xl border-none bg-slate-50 p-5 focus:ring-2 focus:ring-blue-600 transition-all appearance-none text-slate-700 font-bold cursor-pointer">
-                    <option>Strategic Partnership</option>
-                    <option>Request technical validation audit</option>
-                    <option>SV Directional Report Access</option>
-                    <option>Startup: Join Commercialization Engine</option>
-                  </select>
+                <h3 className="text-3xl font-black mb-8 leading-tight">Skip the inbox delay. <br /> Message us directly.</h3>
+                
+                <div className="space-y-6">
+                  <a 
+                    href={`mailto:${emailAddress}?subject=Industrial AI Technical Deep-Dive Inquiry`}
+                    className="w-full flex items-center justify-center gap-4 bg-blue-600 hover:bg-blue-700 text-white font-black py-6 rounded-2xl text-lg uppercase tracking-widest transition-all hover:-translate-y-1 shadow-2xl shadow-blue-900 active:scale-95"
+                  >
+                    Email the SV Team <Mail className="h-6 w-6" />
+                  </a>
+                  
+                  <button 
+                    onClick={copyEmail}
+                    className="w-full flex items-center justify-center gap-4 bg-white/10 hover:bg-white/20 text-white/80 font-bold py-5 rounded-2xl text-sm uppercase tracking-widest transition-all active:scale-95 border border-white/10"
+                  >
+                    {copied ? 'Copied to Clipboard!' : 'Copy Email Address'} 
+                    {copied ? <CheckCircle2 className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
+                  </button>
                 </div>
-                <div className="text-left">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-3 ml-1 text-left">Facility Details / Message</label>
-                  <textarea rows={4} className="w-full rounded-2xl border-none bg-slate-50 p-5 focus:ring-2 focus:ring-blue-600 transition-all font-bold text-slate-700 placeholder:text-slate-300" placeholder="Briefly describe your industrial challenges..."></textarea>
-                </div>
-                <button className="w-full rounded-2xl bg-blue-600 py-6 font-black text-white shadow-2xl shadow-blue-300 transition-all hover:bg-blue-700 hover:-translate-y-1 active:scale-95 text-lg flex items-center justify-center gap-4 uppercase tracking-widest">
-                  Submit Enquiry <ArrowRight className="h-6 w-6" />
-                </button>
-              </form>
+                
+                <p className="mt-10 text-slate-400 text-sm font-medium leading-relaxed italic opacity-75">
+                  Typical response time: Under 24 hours for Technical Audit requests.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -408,26 +429,26 @@ const App = () => {
                     e.target.nextSibling.style.display = 'flex';
                   }}
                 />
-                <div className="hidden h-14 w-14 items-center justify-center rounded-xl bg-blue-600 font-black text-white text-2xl shadow-lg">
+                <div className="hidden h-14 w-14 items-center justify-center rounded-xl bg-blue-600 font-black text-white text-2xl shadow-lg font-sans">
                   B
                 </div>
               </div>
-              <span className="text-3xl font-black text-white tracking-tighter italic uppercase">BLOCK71 <span className="text-blue-600 font-black">SV</span></span>
+              <span className="text-3xl font-black text-white tracking-tighter italic uppercase font-sans">BLOCK71 <span className="text-blue-600 font-black font-sans">SV</span></span>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-12 text-sm font-black uppercase tracking-[0.2em]">
-              <a href="#" className="text-slate-400 hover:text-blue-500 transition-colors">Privacy</a>
-              <a href="#" className="text-slate-400 hover:text-blue-500 transition-colors">Terms</a>
-              <a href="https://enterprise.nus.edu.sg/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors">NUS Enterprise</a>
+            <div className="flex flex-wrap justify-center gap-12 text-sm font-black uppercase tracking-[0.2em] font-sans">
+              <a href="#" className="text-slate-400 hover:text-blue-500 transition-colors font-sans">Privacy</a>
+              <a href="#" className="text-slate-400 hover:text-blue-500 transition-colors font-sans">Terms</a>
+              <a href="https://enterprise.nus.edu.sg/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors font-sans uppercase font-sans">NUS Enterprise</a>
             </div>
           </div>
           
-          <div className="mt-20 border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center">
-            <p className="text-xs font-bold uppercase tracking-widest text-slate-700">© 2026 BLOCK71 Silicon Valley. Industrial AI Deployment Gateway.</p>
+          <div className="mt-20 border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center font-sans">
+            <p className="text-xs font-bold uppercase tracking-widest text-slate-700 font-sans">© 2026 BLOCK71 Silicon Valley. Industrial AI Deployment Gateway.</p>
             <div className="flex gap-6 text-white/20">
-              <BarChart3 className="h-5 w-5" />
-              <Network className="h-5 w-5" />
-              <ShieldCheck className="h-5 w-5" />
+              <BarChart3 className="h-5 w-5 font-sans" />
+              <Network className="h-5 w-5 font-sans" />
+              <ShieldCheck className="h-5 w-5 font-sans" />
             </div>
           </div>
         </div>
