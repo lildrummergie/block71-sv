@@ -36,31 +36,40 @@ const App = () => {
 
   const portfolioStories = [
     {
-      startup: "Invigilo AI",
-      sector: "Safety Intelligence",
-      impact: "Significant Incident Reduction",
-      metric: "High-Accuracy Real-Time Detection",
-      quote: "SafeKey™ fosters a safety culture at our worksite, promoting individual accountability and enhancing overall measures effectively.",
-      author: "HSE R&D Manager, Saipem",
-      bg: "bg-blue-600"
-    },
-    {
       startup: "Devol Robots",
-      sector: "Physical AI",
-      impact: "Rapid SKU Onboarding",
-      metric: "Micron-Level Tactile Precision",
+      sector: "Robotics & Automation",
+      impact: "1-Hour SKU Onboarding",
+      metric: "Contact-Rich Manipulation",
       quote: "We solved the 'Tactile Gap.' Devol allows us to automate high-mix assembly that standard vision-only robotics simply can't handle.",
       author: "Sze Yuan, CEO",
       bg: "bg-slate-900"
     },
     {
+      startup: "Invigilo AI",
+      sector: "Industrial Safety AI",
+      impact: "60% Accident Reduction",
+      metric: "Real-Time PPE Compliance",
+      quote: "A thousand near-misses happen before an accident does. Our mission is to empower safety teams to identify these signals early and intervene proactively.",
+      author: "Vishnu Saran, CEO",
+      bg: "bg-blue-600"
+    },
+    {
       startup: "InPipe Energy",
-      sector: "Renewable Infrastructure",
-      impact: "High System Availability",
-      metric: "Scalable Basalt Energy Revenue",
+      sector: "Smart Infrastructure",
+      impact: "Zero-CapEx Energy Recovery",
+      metric: "24/7 Renewable Power",
       quote: "We turn a force utilities already pay to manage into carbon-free baseload power. It's a fundamental shift in infrastructure economics.",
       author: "Gregg Semler, Founder",
       bg: "bg-emerald-600"
+    },
+    {
+      startup: "Hivebotics",
+      sector: "Autonomous Maintenance",
+      impact: "$20M Validated Order Book",
+      metric: "RaaS-Based Cleaning",
+      quote: "Our mission is to automate the most dull and dangerous maintenance tasks in high-traffic environments, delivering consistent quality at scale.",
+      author: "CEO, Hivebotics",
+      bg: "bg-blue-800"
     }
   ];
 
@@ -95,7 +104,7 @@ const App = () => {
       {/* Navigation */}
       <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/95 py-4 shadow-md backdrop-blur-md' : 'bg-transparent py-8'}`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 text-left font-sans">
             <div className="relative group">
               <img 
                 src="/logo.png" 
@@ -107,19 +116,20 @@ const App = () => {
                   e.target.nextSibling.style.display = 'flex';
                 }}
               />
-              <div className="hidden h-16 w-16 items-center justify-center rounded-2xl bg-blue-600 font-black text-white text-3xl shadow-lg">B</div>
+              <div className="hidden h-16 w-16 items-center justify-center rounded-2xl bg-blue-600 font-black text-white text-3xl shadow-lg">
+                B
+              </div>
             </div>
-            
             <div className="h-12 w-px bg-slate-200 hidden sm:block"></div>
-            <span className="text-2xl font-black tracking-tight text-slate-900 flex flex-col leading-none text-left">
-              <span className="text-blue-600 uppercase tracking-tighter">BLOCK71</span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-slate-500 font-sans">Silicon Valley</span>
+            {/* Updated Header text with whitespace-nowrap for single line consistency */}
+            <span className="text-2xl sm:text-3xl font-black tracking-tighter italic uppercase text-slate-900 whitespace-nowrap">
+              BLOCK71 <span className="text-blue-600">SV</span>
             </span>
           </div>
           <div className="hidden items-center gap-10 md:flex">
             <a href="#advantage" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Strategic Partnership</a>
             <a href="#solutions" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Verticals</a>
-            <a href="#portfolio" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Impact</a>
+            <a href="#outcomes" className="text-sm font-bold text-slate-600 hover:text-blue-600 transition-colors">Outcomes</a>
             <a href="#contact" className="rounded-full bg-blue-600 px-8 py-3 text-sm font-bold text-white shadow-xl shadow-blue-200 transition-all hover:bg-blue-700 active:scale-95 font-sans">
               Partner With Us
             </a>
@@ -147,7 +157,7 @@ const App = () => {
             Orchestrating global innovation. We connect high-signal founders with corporate authority to solve the world's most complex industrial challenges.
           </p>
           <div className="flex flex-col items-center justify-center gap-6 sm:flex-row px-6">
-            <a href="#portfolio" className="flex w-full items-center justify-center gap-4 rounded-2xl bg-slate-900 px-12 py-6 text-lg font-bold text-white transition-all hover:bg-slate-800 hover:shadow-2xl active:scale-95 sm:w-auto text-center">
+            <a href="#outcomes" className="flex w-full items-center justify-center gap-4 rounded-2xl bg-slate-900 px-12 py-6 text-lg font-bold text-white transition-all hover:bg-slate-800 hover:shadow-2xl active:scale-95 sm:w-auto text-center">
               View Deployment-Ready Startups <ArrowRight className="h-5 w-5" />
             </a>
             <a href="#contact" className="flex w-full items-center justify-center gap-4 rounded-2xl border-2 border-slate-100 bg-white px-12 py-6 text-lg font-bold transition-all hover:bg-slate-50 active:scale-95 sm:w-auto text-slate-600 text-center font-sans">
@@ -198,117 +208,131 @@ const App = () => {
         </div>
       </section>
 
-      {/* Strategic Verticals */}
+      {/* Featured Verticals - Proof of Outcomes */}
       <section className="py-32 bg-slate-50 font-sans" id="solutions">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-20 max-w-3xl text-left font-sans">
-            <h2 className="mb-6 text-4xl font-black text-slate-900 tracking-tight font-sans">Core Strategic Verticals</h2>
-            <p className="text-xl text-slate-500 font-medium leading-relaxed font-sans">
-              We specialize in high-barrier technology sectors where technical excellence translates directly to infrastructure modernization and operational efficiency.
+        <div className="mx-auto max-w-7xl px-6 text-left">
+          <div className="mb-20 max-w-3xl">
+            <h2 className="mb-6 text-4xl font-black text-slate-900 tracking-tight">Featured Verticals: Proof of Outcomes</h2>
+            <p className="text-xl text-slate-500 font-medium leading-relaxed">
+              We specialize in high-barrier technologies where technical excellence translates directly to operational cost savings and safety.
             </p>
           </div>
           
-          <div className="grid gap-8 md:grid-cols-3 text-left font-sans">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
               { 
-                title: "Physical AI", 
-                icon: <Bot className="h-10 w-10 text-blue-600" />,
-                desc: "Foundation models and edge autonomy designed to master tactile intelligence in complex industrial environments."
+                title: "Robotics & Automation", 
+                outcome: "Contact-rich manipulation for high-mix assembly.",
+                solution: "Devol: 1-hour SKU onboarding.",
+                icon: <Bot className="h-8 w-8 text-blue-600" />
               },
               { 
-                title: "MatSci & Semiconductors", 
-                icon: <Cpu className="h-10 w-10 text-emerald-600" />,
-                desc: "Next-gen interconnects and fabless R&D leveraging Singapore's role as a neutral, high-precision testing bed."
+                title: "Industrial Safety AI", 
+                outcome: "Real-time visibility and PPE compliance via CCTV.",
+                solution: "Invigilo: 60% accident reduction.",
+                icon: <HardHat className="h-8 w-8 text-emerald-600" />
               },
               { 
-                title: "Biotech & Healthcare", 
-                icon: <Microscope className="h-10 w-10 text-rose-600" />,
-                desc: "AI-driven discovery and advanced surgical robotics re-engineering the future of patient care and bio-manufacturing."
+                title: "Smart Infrastructure", 
+                outcome: "Wasted pressure converted to 24/7 renewable power.",
+                solution: "InPipe: Zero-CapEx Energy recovery.",
+                icon: <Zap className="h-8 w-8 text-rose-600" />
+              },
+              { 
+                title: "Autonomous Maintenance", 
+                outcome: "RaaS-based cleaning for high-traffic environments.",
+                solution: "Hivebotics: $20M validated order book.",
+                icon: <Settings className="h-8 w-8 text-orange-600" />
               }
             ].map((pillar, i) => (
-              <div key={i} className="group relative rounded-[2.5rem] bg-white p-12 shadow-sm transition-all hover:-translate-y-2 hover:shadow-2xl border border-slate-100 font-sans">
-                <div className="mb-8 inline-flex rounded-3xl bg-slate-50 p-5 text-slate-900 transition-colors group-hover:bg-blue-600 group-hover:text-white">
+              <div key={i} className="group relative rounded-[2.5rem] bg-white p-10 shadow-sm transition-all hover:-translate-y-2 border border-slate-100 text-left">
+                <div className="mb-6 inline-flex rounded-2xl bg-slate-50 p-4 text-slate-900 transition-colors group-hover:bg-blue-600 group-hover:text-white">
                   {pillar.icon}
                 </div>
-                <h3 className="mb-4 text-2xl font-black tracking-tight font-sans">{pillar.title}</h3>
-                <p className="text-slate-500 leading-relaxed font-medium font-sans">{pillar.desc}</p>
+                <h3 className="mb-4 text-xl font-black tracking-tight">{pillar.title}</h3>
+                <div className="mb-4">
+                  <span className="text-[10px] font-black uppercase text-slate-400 block mb-1">Outcome Focus</span>
+                  <p className="text-slate-600 font-bold text-sm leading-snug">{pillar.outcome}</p>
+                </div>
+                <div>
+                  <span className="text-[10px] font-black uppercase text-blue-600 block mb-1">Featured Solution</span>
+                  <p className="text-slate-900 font-black text-sm">{pillar.solution}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section className="py-32 bg-white font-sans" id="portfolio">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-20 text-center">
-            <h2 className="mb-4 text-4xl font-black text-slate-900 tracking-tight font-sans text-center">Portfolio Impact</h2>
-            <p className="text-slate-500 text-lg font-medium font-sans text-center">Outcome-driven validation from the BLOCK71 SV ecosystem.</p>
+      {/* Impact Section / Stories */}
+      <section className="py-32 bg-white font-sans overflow-hidden" id="outcomes">
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <div className="mb-20">
+            <h2 className="mb-4 text-4xl font-black text-slate-900 tracking-tight">Deployment Snapshots</h2>
+            <p className="text-slate-500 text-lg font-medium">Outcome-driven validation from the BLOCK71 SV ecosystem.</p>
           </div>
 
-          <div className="relative font-sans">
-            {portfolioStories.map((story, i) => (
-              <div 
-                key={i} 
-                className={`transition-all duration-1000 ${i === activeStory ? 'opacity-100 translate-y-0 relative' : 'opacity-0 translate-y-20 absolute inset-0 pointer-events-none'}`}
-              >
-                <div className={`rounded-[3.5rem] ${story.bg} p-10 lg:p-24 text-white shadow-3xl flex flex-col lg:flex-row items-center gap-20 overflow-hidden relative font-sans text-left`}>
-                  <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none text-white font-sans">
-                    <Globe2 className="h-80 w-80 font-sans text-white" />
-                  </div>
-                  
-                  <div className="lg:w-3/5 relative z-10 font-sans text-left text-white">
-                    <div className="mb-8 flex items-center gap-4 text-white font-sans">
-                      <div className="bg-white/20 p-2.5 rounded-xl backdrop-blur-md">
-                        <Trophy className="h-6 w-6 text-white" />
+          <div className="relative">
+            <div className="min-h-[450px]">
+              {portfolioStories.map((story, i) => (
+                <div 
+                  key={i} 
+                  className={`transition-all duration-700 ${i === activeStory ? 'block opacity-100' : 'hidden opacity-0'}`}
+                >
+                  <div className={`rounded-[2.5rem] sm:rounded-[3.5rem] ${story.bg} p-8 sm:p-16 lg:p-20 text-white shadow-3xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative text-left`}>
+                    <div className="lg:w-3/5 relative z-10 text-left text-white font-sans">
+                      <div className="mb-6 sm:mb-8 flex items-center gap-4">
+                        <div className="bg-white/20 p-2.5 rounded-xl backdrop-blur-md">
+                          <Trophy className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        </div>
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/70">{story.startup} • {story.sector}</span>
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/70 font-sans">{story.startup} • {story.sector}</span>
-                    </div>
-                    <h3 className="mb-10 text-4xl font-black leading-[1.1] sm:text-6xl tracking-tighter text-white font-sans">
-                      {story.impact} <br />
-                      <span className="text-white/40 font-sans text-white">{story.metric}</span>
-                    </h3>
-                    <div className="relative mb-12 max-w-xl font-sans text-white">
-                      <Quote className="absolute -left-12 -top-8 h-20 w-20 text-white/10 font-sans" />
-                      <p className="text-2xl italic leading-relaxed text-white/90 relative z-10 font-medium font-sans">
-                        "{story.quote}"
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-5 border-t border-white/20 pt-10 font-sans text-white">
-                      <div className="h-16 w-16 rounded-2xl bg-white/20 backdrop-blur-lg flex items-center justify-center font-black text-3xl font-sans">
-                        {story.author?.[0] || "B"}
+                      <h2 className="mb-8 text-3xl sm:text-5xl font-black leading-[1.1] tracking-tighter">
+                        {story.impact} <br />
+                        <span className="text-white/40">{story.metric}</span>
+                      </h2>
+                      <div className="relative mb-8 sm:mb-12 max-w-xl">
+                        <Quote className="absolute -left-6 sm:-left-12 -top-4 sm:-top-8 h-10 w-10 sm:h-20 sm:w-20 text-white/10" />
+                        <p className="text-xl sm:text-2xl italic leading-relaxed text-white/90 relative z-10 font-medium">
+                          "{story.quote}"
+                        </p>
                       </div>
-                      <div>
-                        <div className="font-black text-xl font-sans">{story.author}</div>
-                        <div className="text-sm text-white/50 font-bold uppercase tracking-widest font-sans">Portfolio Partner</div>
+                      <div className="flex items-center gap-5 border-t border-white/20 pt-8">
+                        <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-2xl bg-white/20 backdrop-blur-lg flex items-center justify-center font-black text-2xl sm:text-3xl">
+                          {story.author?.[0] || "B"}
+                        </div>
+                        <div>
+                          <div className="font-black text-lg sm:text-xl">{story.author}</div>
+                          <div className="text-[10px] sm:text-sm text-white/50 font-bold uppercase tracking-widest">Portfolio Partner</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="lg:w-2/5 w-full relative z-10 font-sans">
-                    <div className="grid grid-cols-1 gap-6 font-sans">
-                       <div className="rounded-[2rem] bg-white/10 p-10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default group font-sans">
-                          <CheckCircle2 className="mb-6 h-12 w-12 text-blue-300 group-hover:scale-110 transition-transform font-sans" />
-                          <h4 className="text-xl font-black mb-3 text-white font-sans leading-tight">Enterprise Pilot Secured</h4>
-                          <p className="text-white/70 font-medium leading-relaxed font-sans">Secured validation with Tier-1 U.S. industrial partners through our direct scouting network.</p>
-                       </div>
-                       <div className="rounded-[2rem] bg-white/10 p-10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default group font-sans">
-                          <LineChart className="mb-6 h-12 w-12 text-blue-300 group-hover:scale-110 transition-transform font-sans font-sans" />
-                          <h4 className="text-xl font-black mb-3 text-white font-sans leading-tight">Accelerated GTM Timeline</h4>
-                          <p className="text-white/70 font-medium leading-relaxed font-sans">Compressed U.S. market entry cycle by aligning research outcomes with enterprise problem statements.</p>
-                       </div>
+                    
+                    <div className="lg:w-2/5 w-full relative z-10">
+                      <div className="grid grid-cols-1 gap-6">
+                         <div className="rounded-[2rem] bg-white/10 p-8 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default text-left">
+                            <CheckCircle2 className="mb-4 h-10 w-10 text-blue-300" />
+                            <h4 className="text-lg font-black mb-3 text-white leading-tight">Enterprise Validation Pilot</h4>
+                            <p className="text-sm text-white/70 font-medium leading-relaxed">Secured validation with Tier-1 industrial partners through our direct scouting network.</p>
+                         </div>
+                         <div className="rounded-[2rem] bg-white/10 p-8 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default text-left">
+                            <LineChart className="mb-4 h-10 w-10 text-blue-300" />
+                            <h4 className="text-lg font-black mb-3 text-white leading-tight">Compressed Cycle</h4>
+                            <p className="text-sm text-white/70 font-medium leading-relaxed">Accelerated GTM by aligning technical research with enterprise procurement requirements.</p>
+                         </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
             
-            <div className="mt-16 flex justify-center gap-4">
+            <div className="mt-12 flex justify-center gap-4">
               {portfolioStories.map((_, i) => (
                 <button 
                   key={i} 
                   onClick={() => setActiveStory(i)}
-                  className={`h-2.5 transition-all duration-500 rounded-full ${i === activeStory ? 'w-24 bg-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.4)]' : 'w-2.5 bg-slate-200'}`}
+                  className={`h-2.5 transition-all duration-500 rounded-full ${i === activeStory ? 'w-16 sm:w-24 bg-blue-600 shadow-lg shadow-blue-200' : 'w-2.5 bg-slate-200'}`}
                 />
               ))}
             </div>
@@ -398,14 +422,16 @@ const App = () => {
               <div className="relative group font-sans">
                 <img 
                   src="/logo.png" 
-                  alt="BLOCK71 Logo" 
-                  className="h-20 sm:h-24 w-auto object-contain transition-all duration-500 font-sans" 
+                  alt="BLOCK71" 
+                  className="h-20 sm:h-24 w-auto object-contain transition-all duration-500"
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.nextSibling.style.display = 'flex';
                   }}
                 />
-                <div className="hidden h-20 w-20 items-center justify-center rounded-2xl bg-blue-600 font-black text-white text-3xl shadow-lg">B</div>
+                <div className="hidden h-20 w-20 items-center justify-center rounded-2xl bg-blue-600 font-black text-white text-3xl shadow-lg">
+                  B
+                </div>
               </div>
               <span className="text-3xl font-black text-white tracking-tighter italic uppercase">BLOCK71 <span className="text-blue-600 font-black">SV</span></span>
             </div>
