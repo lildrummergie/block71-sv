@@ -406,7 +406,7 @@ const App = () => {
                 </div>
                 
                 <p className="mt-10 text-slate-400 text-sm font-medium leading-relaxed italic opacity-75">
-                  Typical response time: Under 24 hours for Technical Audit requests.
+                  Typical response time: Under 24 hours.
                 </p>
               </div>
             </div>
