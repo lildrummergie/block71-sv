@@ -323,7 +323,7 @@ const App = () => {
           <div className="mb-24 text-center font-sans">
             <h2 className="mb-6 text-5xl font-black text-white tracking-tight font-sans text-center font-sans text-white">The Commercialization Engine</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-xl font-medium italic opacity-80 leading-relaxed font-sans text-center font-sans">
-              "We don't just accelerate startups; we systemize their entry into the U.S. enterprise environment."
+              We don't just accelerate startups; we systemize their entry into the U.S. enterprise environment.
             </p>
           </div>
           
