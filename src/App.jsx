@@ -104,7 +104,7 @@ const App = () => {
       {/* Navigation */}
       <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/95 py-3 shadow-md backdrop-blur-md' : 'bg-transparent py-6'}`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-          <div className="flex items-center gap-4 text-left">
+          <div className="flex items-center gap-4 text-left font-sans">
             <div className="relative group">
               <img 
                 src="/logo.png" 
@@ -156,8 +156,8 @@ const App = () => {
           <p className="mx-auto mb-12 max-w-3xl text-lg text-slate-500 sm:text-xl leading-relaxed font-medium font-sans px-4">
             Orchestrating global innovation. We connect high-signal founders with corporate authority to solve the world's most complex industrial challenges.
           </p>
-          <div className="flex flex-col items-center justify-center gap-5 sm:flex-row px-6">
-            <a href="#outcomes" className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 px-10 py-5 text-lg font-bold text-white transition-all hover:bg-slate-800 hover:shadow-2xl active:scale-95 sm:w-auto text-center">
+          <div className="flex flex-col items-center justify-center gap-5 sm:flex-row px-6 font-sans">
+            <a href="#outcomes" className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 px-10 py-5 text-lg font-bold text-white transition-all hover:bg-slate-800 hover:shadow-2xl active:scale-95 sm:w-auto text-center font-sans">
               View Deployment-Ready Startups <ArrowRight className="h-5 w-5" />
             </a>
             <a href="#contact" className="flex w-full items-center justify-center gap-3 rounded-2xl border-2 border-slate-100 bg-white px-10 py-5 text-lg font-bold transition-all hover:bg-slate-50 active:scale-95 sm:w-auto text-slate-600 text-center font-sans">
@@ -169,7 +169,7 @@ const App = () => {
 
       {/* Strategic Partnership Advantage Section */}
       <section className="py-32 bg-slate-900 text-white font-sans overflow-hidden" id="advantage">
-        <div className="mx-auto max-w-7xl px-6 text-left">
+        <div className="mx-auto max-w-7xl px-6 text-left font-sans">
           <div className="mb-20 max-w-4xl">
             <span className="text-blue-400 font-black text-xs uppercase tracking-[0.4em] mb-4 block">Strategic Partnership Model</span>
             <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-8">Stop Scouting. Start Deploying.</h2>
@@ -210,7 +210,7 @@ const App = () => {
 
       {/* Featured Verticals - Proof of Outcomes */}
       <section className="py-32 bg-slate-50 font-sans" id="solutions">
-        <div className="mx-auto max-w-7xl px-6 text-left">
+        <div className="mx-auto max-w-7xl px-6 text-left font-sans">
           <div className="mb-20 max-w-3xl">
             <h2 className="mb-6 text-4xl font-black text-slate-900 tracking-tight">Featured Verticals: Proof of Outcomes</h2>
             <p className="text-xl text-slate-500 font-medium leading-relaxed">
@@ -245,7 +245,7 @@ const App = () => {
                 icon: <Settings className="h-8 w-8 text-orange-600" />
               }
             ].map((pillar, i) => (
-              <div key={i} className="group relative rounded-[2.5rem] bg-white p-10 shadow-sm transition-all hover:-translate-y-2 border border-slate-100 text-left">
+              <div key={i} className="group relative rounded-[2.5rem] bg-white p-10 shadow-sm transition-all hover:-translate-y-2 border border-slate-100 text-left font-sans">
                 <div className="mb-6 inline-flex rounded-2xl bg-slate-50 p-4 text-slate-900 transition-colors group-hover:bg-blue-600 group-hover:text-white">
                   {pillar.icon}
                 </div>
@@ -266,7 +266,7 @@ const App = () => {
 
       {/* Impact Section / Stories */}
       <section className="py-32 bg-white font-sans overflow-hidden" id="outcomes">
-        <div className="mx-auto max-w-7xl px-6 text-center">
+        <div className="mx-auto max-w-7xl px-6 text-center font-sans">
           <div className="mb-20">
             <h2 className="mb-4 text-4xl font-black text-slate-900 tracking-tight">Deployment Snapshots</h2>
             <p className="text-slate-500 text-lg font-medium">Outcome-driven validation from the BLOCK71 SV ecosystem.</p>
@@ -279,46 +279,46 @@ const App = () => {
                   key={i} 
                   className={`transition-all duration-700 ${i === activeStory ? 'block opacity-100' : 'hidden opacity-0'}`}
                 >
-                  <div className={`rounded-[2.5rem] sm:rounded-[3.5rem] ${story.bg} p-8 sm:p-16 lg:p-20 text-white shadow-3xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative text-left`}>
+                  <div className={`rounded-[2.5rem] sm:rounded-[3.5rem] ${story.bg} p-8 sm:p-16 lg:p-20 text-white shadow-3xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative font-sans text-left`}>
                     <div className="lg:w-3/5 relative z-10 text-left text-white font-sans">
                       <div className="mb-6 sm:mb-8 flex items-center gap-4">
                         <div className="bg-white/20 p-2.5 rounded-xl backdrop-blur-md">
                           <Trophy className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                         </div>
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/70">{story.startup} • {story.sector}</span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/70 font-sans">{story.startup} • {story.sector}</span>
                       </div>
                       <h2 className="mb-8 text-3xl sm:text-5xl font-black leading-[1.1] tracking-tighter">
                         {story.impact} <br />
                         <span className="text-white/40">{story.metric}</span>
                       </h2>
-                      <div className="relative mb-8 sm:mb-12 max-w-xl">
+                      <div className="relative mb-8 sm:mb-12 max-w-xl font-sans">
                         <Quote className="absolute -left-6 sm:-left-12 -top-4 sm:-top-8 h-10 w-10 sm:h-20 sm:w-20 text-white/10" />
                         <p className="text-xl sm:text-2xl italic leading-relaxed text-white/90 relative z-10 font-medium">
                           "{story.quote}"
                         </p>
                       </div>
-                      <div className="flex items-center gap-5 border-t border-white/20 pt-8">
+                      <div className="flex items-center gap-5 border-t border-white/20 pt-8 font-sans">
                         <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-2xl bg-white/20 backdrop-blur-lg flex items-center justify-center font-black text-2xl sm:text-3xl">
                           {story.author?.[0] || "B"}
                         </div>
                         <div>
                           <div className="font-black text-lg sm:text-xl">{story.author}</div>
-                          <div className="text-[10px] sm:text-sm text-white/50 font-bold uppercase tracking-widest">Portfolio Partner</div>
+                          <div className="text-[10px] sm:text-sm text-white/50 font-bold uppercase tracking-widest font-sans">Portfolio Partner</div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="lg:w-2/5 w-full relative z-10">
+                    <div className="lg:w-2/5 w-full relative z-10 font-sans">
                       <div className="grid grid-cols-1 gap-6">
                          <div className="rounded-[2rem] bg-white/10 p-8 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default text-left font-sans">
                             <CheckCircle2 className="mb-4 h-10 w-10 text-blue-300" />
                             <h4 className="text-lg font-black mb-3 text-white leading-tight">Enterprise Validation Pilot</h4>
-                            <p className="text-sm text-white/70 font-medium leading-relaxed">Secured validation with Tier-1 industrial partners through our direct scouting network.</p>
+                            <p className="text-sm text-white/70 font-medium leading-relaxed font-sans">Secured validation with Tier-1 industrial partners through our direct scouting network.</p>
                          </div>
                          <div className="rounded-[2rem] bg-white/10 p-8 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default text-left font-sans">
                             <LineChart className="mb-4 h-10 w-10 text-blue-300" />
                             <h4 className="text-lg font-black mb-3 text-white leading-tight">Compressed Cycle</h4>
-                            <p className="text-sm text-white/70 font-medium leading-relaxed">Accelerated GTM by aligning technical research with enterprise procurement requirements.</p>
+                            <p className="text-sm text-white/70 font-medium leading-relaxed font-sans">Accelerated GTM by aligning technical research with enterprise procurement requirements.</p>
                          </div>
                       </div>
                     </div>
@@ -340,72 +340,72 @@ const App = () => {
         </div>
       </section>
 
-      {/* Updated Contact Section with ordered Global Presence */}
+      {/* Streamlined Contact Section */}
       <section className="py-32 bg-slate-50 font-sans" id="contact">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="rounded-[4rem] bg-white p-12 lg:p-24 shadow-3xl border border-slate-100 flex flex-col lg:flex-row items-center gap-20 overflow-hidden relative">
+        <div className="mx-auto max-w-7xl px-6 font-sans">
+          <div className="rounded-[4rem] bg-white p-12 lg:p-24 shadow-3xl border border-slate-100 flex flex-col lg:flex-row items-center gap-20 overflow-hidden relative font-sans">
             <div className="absolute top-0 right-0 p-24 opacity-[0.03] pointer-events-none">
               <Mail className="h-96 w-96 text-slate-900" />
             </div>
             
-            <div className="lg:w-1/2 text-left relative z-10">
-              <span className="text-blue-600 font-black text-xs uppercase tracking-[0.4em] mb-4 block">Direct Access</span>
-              <h2 className="mb-8 text-5xl sm:text-6xl font-black text-slate-900 leading-[1.05] tracking-tighter">Ready for a <br /> Technical Deep-Dive?</h2>
-              <p className="mb-12 text-xl text-slate-500 font-medium leading-relaxed max-w-md">
+            <div className="lg:w-1/2 text-left relative z-10 font-sans">
+              <span className="text-blue-600 font-black text-xs uppercase tracking-[0.4em] mb-4 block font-sans">Direct Access</span>
+              <h2 className="mb-8 text-5xl sm:text-6xl font-black text-slate-900 leading-[1.05] tracking-tighter font-sans">Ready for a <br /> Technical Deep-Dive?</h2>
+              <p className="mb-12 text-xl text-slate-500 font-medium leading-relaxed max-w-md font-sans">
                 Request our latest <span className="text-slate-900 font-bold">"SV Directional Report"</span> on Industrial AI adoption trends or book a technical audit for your facility.
               </p>
               
-              <div className="space-y-12">
+              <div className="space-y-12 font-sans">
                 <div className="flex items-center gap-8 group">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 shadow-xl shadow-slate-100 transition-all group-hover:bg-blue-600 group-hover:text-white border border-slate-200 text-slate-900 font-sans">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 shadow-xl shadow-slate-100 transition-all group-hover:bg-blue-600 group-hover:text-white border border-slate-200 text-slate-900">
                     <MapPin className="h-6 w-6" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1">Global Presence</div>
-                    <div className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 leading-tight">USA, Singapore, Indonesia, Vietnam, Japan, China</div>
+                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1 font-sans">Global Presence</div>
+                    <div className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 leading-tight font-sans">USA, Singapore, Indonesia, Vietnam, Japan, China</div>
                   </div>
                 </div>
                 
                 <a href="https://www.linkedin.com/in/angelinetansf/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-8 group">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 shadow-xl shadow-slate-100 transition-all group-hover:bg-blue-600 group-hover:text-white border border-slate-200 text-slate-900 font-sans">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 shadow-xl shadow-slate-100 transition-all group-hover:bg-blue-600 group-hover:text-white border border-slate-200 text-slate-900">
                     <Linkedin className="h-6 w-6" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1">Direct Networking</div>
-                    <div className="text-2xl font-black tracking-tight text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">Connect on LinkedIn</div>
+                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1 font-sans">Direct Networking</div>
+                    <div className="text-2xl font-black tracking-tight text-slate-900 leading-tight group-hover:text-blue-600 transition-colors font-sans">Connect on LinkedIn</div>
                   </div>
                 </a>
               </div>
             </div>
             
-            <div className="lg:w-1/2 w-full text-center lg:text-left relative z-10">
+            <div className="lg:w-1/2 w-full text-center lg:text-left relative z-10 font-sans">
               <div className="bg-slate-900 rounded-[3rem] p-10 lg:p-16 text-white shadow-2xl">
                 <div className="mb-8 flex items-center justify-center lg:justify-start gap-4">
                   <div className="bg-blue-600/20 p-3 rounded-xl border border-blue-500/30">
                     <Zap className="h-6 w-6 text-blue-400" />
                   </div>
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Decision Maker Access</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 font-sans">Decision Maker Access</span>
                 </div>
-                <h3 className="text-3xl font-black mb-8 leading-tight">Skip the inbox delay. <br /> Message us directly.</h3>
+                <h3 className="text-3xl font-black mb-8 leading-tight font-sans">Skip the inbox delay. <br /> Message us directly.</h3>
                 
                 <div className="space-y-6">
                   <a 
                     href={`mailto:${emailAddress}?subject=Industrial AI Technical Deep-Dive Inquiry`}
-                    className="w-full flex items-center justify-center gap-4 bg-blue-600 hover:bg-blue-700 text-white font-black py-6 rounded-2xl text-lg uppercase tracking-widest transition-all hover:-translate-y-1 shadow-2xl shadow-blue-900 active:scale-95"
+                    className="w-full flex items-center justify-center gap-4 bg-blue-600 hover:bg-blue-700 text-white font-black py-6 rounded-2xl text-lg uppercase tracking-widest transition-all hover:-translate-y-1 shadow-2xl shadow-blue-900 active:scale-95 font-sans"
                   >
                     Email the SV Team <Mail className="h-6 w-6" />
                   </a>
                   
                   <button 
                     onClick={copyEmail}
-                    className="w-full flex items-center justify-center gap-4 bg-white/10 hover:bg-white/20 text-white/80 font-bold py-5 rounded-2xl text-sm uppercase tracking-widest transition-all active:scale-95 border border-white/10"
+                    className="w-full flex items-center justify-center gap-4 bg-white/10 hover:bg-white/20 text-white/80 font-bold py-5 rounded-2xl text-sm uppercase tracking-widest transition-all active:scale-95 border border-white/10 font-sans"
                   >
                     {copied ? 'Copied to Clipboard!' : 'Copy Email Address'} 
                     {copied ? <CheckCircle2 className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
                   </button>
                 </div>
                 
-                <p className="mt-10 text-slate-400 text-sm font-medium leading-relaxed italic opacity-75">
+                <p className="mt-10 text-slate-400 text-sm font-medium leading-relaxed italic opacity-75 font-sans">
                   Typical response time: Under 24 hours.
                 </p>
               </div>
@@ -417,9 +417,9 @@ const App = () => {
       {/* Footer */}
       <footer className="bg-slate-900 py-24 text-slate-500 font-sans border-t border-white/5">
         <div className="mx-auto max-w-7xl px-6 text-center md:text-left">
-          <div className="flex flex-col items-center justify-between gap-16 md:flex-row">
+          <div className="flex flex-col items-center justify-between gap-16 md:flex-row font-sans">
             <div className="flex items-center gap-6">
-              <div className="relative group">
+              <div className="relative group font-sans">
                 <img 
                   src="/logo.png" 
                   alt="BLOCK71" 
@@ -439,7 +439,7 @@ const App = () => {
             <div className="flex flex-wrap justify-center gap-12 text-sm font-black uppercase tracking-[0.2em] font-sans">
               <a href="#" className="text-slate-400 hover:text-blue-500 transition-colors font-sans">Privacy</a>
               <a href="#" className="text-slate-400 hover:text-blue-500 transition-colors font-sans">Terms</a>
-              <a href="https://enterprise.nus.edu.sg/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors font-sans uppercase font-sans">NUS Enterprise</a>
+              <a href="https://enterprise.nus.edu.sg/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors uppercase font-sans">NUS Enterprise</a>
             </div>
           </div>
           
