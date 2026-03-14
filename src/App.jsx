@@ -76,8 +76,20 @@ const App = () => {
       <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white/95 py-3 shadow-md backdrop-blur-md' : 'bg-transparent py-6'}`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
           <div className="flex items-center gap-4 text-left">
-            <div className="relative group flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 font-black text-white text-2xl shadow-lg">
-              B
+            <div className="relative group">
+              <img 
+                src="/logo.png" 
+                alt="BLOCK71" 
+                className="h-10 w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-md"
+                style={{ minWidth: '40px' }}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="hidden h-10 w-10 items-center justify-center rounded-xl bg-blue-600 font-black text-white text-xl shadow-lg">
+                B
+              </div>
             </div>
             <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
             <span className="text-xl font-black tracking-tight text-slate-900 flex flex-col leading-none">
@@ -109,12 +121,12 @@ const App = () => {
             </span>
             The Industrial AI Commercialization Gateway
           </div>
-          <h1 className="mb-6 text-5xl font-black tracking-tight text-slate-900 sm:text-7xl lg:text-8xl leading-[1.05] font-sans">
+          <h1 className="mb-6 text-4xl sm:text-5xl lg:text-8xl font-black tracking-tight text-slate-900 leading-[1.05] font-sans">
             Bridging Asian Innovation <br />
             <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent font-black font-sans">to U.S. Enterprise</span>
           </h1>
           <p className="mx-auto mb-12 max-w-2xl text-lg text-slate-500 sm:text-xl leading-relaxed font-medium font-sans">
-            We turn ecosystem signals into commercial outcomes. Connecting global corporate leaders with high-barrier startups through an outcome-aligned execution engine.
+            Orchestrating global innovation. We connect high-signal founders with corporate authority to solve the world's most complex industrial challenges.
           </p>
           <div className="flex flex-col items-center justify-center gap-5 sm:flex-row font-sans">
             <a href="#contact" className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-900 px-10 py-5 text-lg font-bold text-white transition-all hover:bg-slate-800 hover:shadow-2xl active:scale-95 sm:w-auto text-center font-sans">
@@ -167,8 +179,8 @@ const App = () => {
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section className="py-32 bg-white font-sans" id="impact">
+      {/* Impact Section - Fixed for Mobile */}
+      <section className="py-32 bg-white font-sans overflow-hidden" id="impact">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-20 text-center">
             <h2 className="mb-4 text-4xl font-black text-slate-900 tracking-tight font-sans text-center">Portfolio Impact</h2>
@@ -176,68 +188,70 @@ const App = () => {
           </div>
 
           <div className="relative font-sans">
-            {portfolioStories.map((story, i) => (
-              <div 
-                key={i} 
-                className={`transition-all duration-1000 ${i === activeStory ? 'opacity-100 translate-y-0 relative' : 'opacity-0 translate-y-20 absolute inset-0 pointer-events-none'}`}
-              >
-                <div className={`rounded-[3.5rem] ${story.bg} p-10 lg:p-24 text-white shadow-3xl flex flex-col lg:flex-row items-center gap-20 overflow-hidden relative font-sans text-left`}>
-                  <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none text-white font-sans">
-                    <Globe2 className="h-80 w-80 font-sans text-white" />
-                  </div>
-                  
-                  <div className="lg:w-3/5 relative z-10 font-sans text-left text-white">
-                    <div className="mb-8 flex items-center gap-4 text-white font-sans">
-                      <div className="bg-white/20 p-2.5 rounded-xl backdrop-blur-md">
-                        <Trophy className="h-6 w-6 text-white" />
-                      </div>
-                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/70 font-sans">{story.startup} • {story.sector}</span>
+            <div className="min-h-[400px]">
+              {portfolioStories.map((story, i) => (
+                <div 
+                  key={i} 
+                  className={`transition-all duration-700 ${i === activeStory ? 'block' : 'hidden'}`}
+                >
+                  <div className={`rounded-[2.5rem] sm:rounded-[3.5rem] ${story.bg} p-8 sm:p-16 lg:p-24 text-white shadow-3xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative font-sans text-left`}>
+                    <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none text-white font-sans">
+                      <Globe2 className="h-40 w-40 sm:h-80 sm:w-80 font-sans text-white" />
                     </div>
-                    <h3 className="mb-10 text-4xl font-black leading-[1.1] sm:text-6xl tracking-tighter text-white font-sans">
-                      {story.impact} <br />
-                      <span className="text-white/40 font-sans text-white">{story.metric}</span>
-                    </h3>
-                    <div className="relative mb-12 max-w-xl font-sans text-white">
-                      <Quote className="absolute -left-12 -top-8 h-20 w-20 text-white/10 font-sans" />
-                      <p className="text-2xl italic leading-relaxed text-white/90 relative z-10 font-medium font-sans">
-                        "{story.quote}"
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-5 border-t border-white/20 pt-10 font-sans text-white">
-                      <div className="h-16 w-16 rounded-2xl bg-white/20 backdrop-blur-lg flex items-center justify-center font-black text-3xl font-sans">
-                        {story.author?.[0] || "B"}
+                    
+                    <div className="lg:w-3/5 relative z-10 font-sans text-left text-white">
+                      <div className="mb-6 sm:mb-8 flex items-center gap-4 text-white font-sans">
+                        <div className="bg-white/20 p-2.5 rounded-xl backdrop-blur-md">
+                          <Trophy className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        </div>
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/70 font-sans">{story.startup} • {story.sector}</span>
                       </div>
-                      <div>
-                        <div className="font-black text-xl font-sans">{story.author}</div>
-                        <div className="text-sm text-white/50 font-bold uppercase tracking-widest font-sans">Portfolio Partner</div>
+                      <h2 className="mb-8 sm:mb-10 text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tighter text-white font-sans">
+                        {story.impact} <br />
+                        <span className="text-white/40 font-sans text-white">{story.metric}</span>
+                      </h2>
+                      <div className="relative mb-8 sm:mb-12 max-w-xl font-sans text-white">
+                        <Quote className="absolute -left-6 sm:-left-12 -top-4 sm:-top-8 h-10 w-10 sm:h-20 sm:w-20 text-white/10 font-sans" />
+                        <p className="text-xl sm:text-2xl italic leading-relaxed text-white/90 relative z-10 font-medium font-sans">
+                          "{story.quote}"
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-5 border-t border-white/20 pt-8 sm:pt-10 font-sans text-white">
+                        <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-2xl bg-white/20 backdrop-blur-lg flex items-center justify-center font-black text-2xl sm:text-3xl font-sans">
+                          {story.author?.[0] || "B"}
+                        </div>
+                        <div>
+                          <div className="font-black text-lg sm:text-xl font-sans">{story.author}</div>
+                          <div className="text-[10px] sm:text-sm text-white/50 font-bold uppercase tracking-widest font-sans">Portfolio Partner</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="lg:w-2/5 w-full relative z-10 font-sans">
-                    <div className="grid grid-cols-1 gap-6 font-sans">
-                       <div className="rounded-[2rem] bg-white/10 p-10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default group font-sans">
-                          <CheckCircle2 className="mb-6 h-12 w-12 text-blue-300 group-hover:scale-110 transition-transform font-sans" />
-                          <h4 className="text-xl font-black mb-3 text-white font-sans leading-tight">Enterprise Pilot Secured</h4>
-                          <p className="text-white/70 font-medium leading-relaxed font-sans">Secured validation with Tier-1 U.S. industrial partners through our direct scouting network.</p>
-                       </div>
-                       <div className="rounded-[2rem] bg-white/10 p-10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default group font-sans">
-                          <LineChart className="mb-6 h-12 w-12 text-blue-300 group-hover:scale-110 transition-transform font-sans font-sans" />
-                          <h4 className="text-xl font-black mb-3 text-white font-sans leading-tight">Accelerated GTM Timeline</h4>
-                          <p className="text-white/70 font-medium leading-relaxed font-sans">Compressed U.S. market entry cycle by aligning research outcomes with enterprise problem statements.</p>
-                       </div>
+                    
+                    <div className="lg:w-2/5 w-full relative z-10 font-sans">
+                      <div className="grid grid-cols-1 gap-6 font-sans">
+                         <div className="rounded-[2rem] bg-white/10 p-8 sm:p-10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default group font-sans">
+                            <CheckCircle2 className="mb-4 sm:mb-6 h-10 w-10 sm:h-12 sm:w-12 text-blue-300 group-hover:scale-110 transition-transform font-sans" />
+                            <h4 className="text-lg sm:text-xl font-black mb-3 text-white font-sans leading-tight">Enterprise Pilot Secured</h4>
+                            <p className="text-sm sm:text-base text-white/70 font-medium leading-relaxed font-sans">Secured validation with Tier-1 U.S. industrial partners through our direct scouting network.</p>
+                         </div>
+                         <div className="rounded-[2rem] bg-white/10 p-8 sm:p-10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all cursor-default group font-sans">
+                            <LineChart className="mb-4 sm:mb-6 h-10 w-10 sm:h-12 sm:w-12 text-blue-300 group-hover:scale-110 transition-transform font-sans font-sans" />
+                            <h4 className="text-lg sm:text-xl font-black mb-3 text-white font-sans leading-tight">Accelerated GTM Timeline</h4>
+                            <p className="text-sm sm:text-base text-white/70 font-medium leading-relaxed font-sans">Compressed U.S. market entry cycle by aligning research outcomes with enterprise problem statements.</p>
+                         </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
             
-            <div className="mt-16 flex justify-center gap-4">
+            <div className="mt-12 sm:mt-16 flex justify-center gap-4">
               {portfolioStories.map((_, i) => (
                 <button 
                   key={i} 
                   onClick={() => setActiveStory(i)}
-                  className={`h-2.5 transition-all duration-500 rounded-full ${i === activeStory ? 'w-24 bg-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.4)]' : 'w-2.5 bg-slate-200'}`}
+                  className={`h-2.5 transition-all duration-500 rounded-full ${i === activeStory ? 'w-16 sm:w-24 bg-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.4)]' : 'w-2.5 bg-slate-200'}`}
                 />
               ))}
             </div>
@@ -447,8 +461,19 @@ const App = () => {
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col items-center justify-between gap-16 md:flex-row font-sans">
             <div className="flex items-center gap-6">
-              <div className="relative group flex h-14 w-14 items-center justify-center rounded-xl bg-blue-600 font-black text-white text-2xl shadow-lg">
-                B
+              <div className="relative group">
+                <img 
+                  src="/logo.png" 
+                  alt="BLOCK71" 
+                  className="h-12 w-auto object-contain transition-all duration-500 drop-shadow-md brightness-200 grayscale hover:grayscale-0 hover:brightness-100"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                <div className="hidden h-12 w-12 items-center justify-center rounded-xl bg-blue-600 font-black text-white text-2xl shadow-lg">
+                  B
+                </div>
               </div>
               <span className="text-3xl font-black text-white tracking-tighter italic uppercase font-sans">BLOCK71 <span className="text-blue-600 font-black font-sans">SV</span></span>
             </div>
